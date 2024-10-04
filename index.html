@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>하루 두 장</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+</head>
+
+<body>
+    <div class="container">
+        <div class="memoBox">
+            <div class="reFresh">
+                Day, 2 Sheets
+            </div>
+            <div class="colorBox">
+                <div class="colorInTextBox">
+                    <span class="text front">
+                        <p class="textTitle"></p>
+                    </span>
+                </div>
+                <div class="back">
+                    <div class="backText">
+                    </div>
+                </div>
+            </div>
+            <div class="madeBy" style="opacity: 0.3; font-size: 0.7rem; text-align: center">
+                화면을 터치 하세요
+                <br/>
+                <br/>
+                MadeBy.HyeonGyeom
+                <br/>
+                 ver.01
+            </div>
+        </div>
+        
+
+        <!-- <div class="memoBox">
+                <div class="colorBox">
+                    <div class="colorInTextBox">
+                        <span class="text front">
+                            <p class="textTitle">#양치기</p>
+                        </span>
+                    </div>
+                    <div class="back" style="top: -45px;">
+                        <div class="backText">
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+    </div>
+
+
+    <script>
+        // 제목과 내용 배열
+        const texts = [
+            {
+                title: "#계절의 간격, 채민성"
+                , lines: [
+                    "서서히 변하는 계절 속에서도"
+                    , "영영 변치 않았으면 하는 것들이 있다"
+                    , "이를테면 편안함에 무뎌진 것들"
+                    , "당연하지만 당연하지 않은 사람들"
+                    , "좁아진 계절의 간격 사이만큼 그들과"
+                    , "한 발짝 더 좁혀진 간격에서 함께하고 싶다."
+                ]
+            }
+            , {
+                title: "#감정, 못말"
+                , lines: [
+                    "평소에 자기감정을"
+                    , "잘 들여다봐 주지 않으면"
+                    , "화를 내야 할 때 웃고"
+                    , "웃어야 할 때 화내게 된다."
+                ]
+            }
+            , {
+                title: "#나는 왜 눈치를 보는가, 가토다이조"
+                , lines: [
+                    "미워해야 할 사람을"
+                    , "미워하지 않는 사람은"
+                    , "정작 소중히 여겨야 할 상대에게는"
+                    , "차갑게 행동하고 있음이 틀림없다."
+                ]
+            }
+            , {
+                title: "#동그라미"
+                , lines: [
+                    "관계에서 감정이 낭비된다는 건"
+                    , "쓸데없는 곳에 감정을 쓴다는 뜻인데"
+                    , "과연 감정을 소비하면서 까지"
+                    , "이어나가야 하는 관계일까 생각해보자"
+                    , "내게 있어 필요하고 소중한 관계라면"
+                    , "애초에 낭비라고 생각되지 않았을 테니까"
+                ]
+            }
+            , {
+                title: "#막연히, 못말"
+                , lines: [
+                    "내 감정의 막연한 크기만큼"
+                    , "네가 나를 막연히 헤매주기를"
+                    , "바랐는지도 모르겠다."
+                ]
+            }
+            , {
+                title: "#촉"
+                , lines: [
+                    "촉이라는건 괜히 있는 말이 아니다"
+                    , "그리고 안 좋은 촉은 대부분 틀리지 않는다"
+                ]
+            }
+            , {
+                title: "#끝, 못말"
+                , lines: [
+                    "맞지 않는단 걸 알았는데"
+                    , "맞출 의향이 없다면,"
+                    , "　"
+                    , "답은 하나죠."
+                ]
+            }
+            , {
+                title: "#인연, 못말"
+                , lines: [
+                    "인연이 아니었다는 말도"
+                    , "운명이 아니었다는 말도 하지 말자"
+                    , "이토록 가벼이 서로를 놓은 우리에게"
+                    , "그다지 어울리는 말은 아니니까"
+                ]
+            }
+            , {
+                title: "#기다린 봄, 못말"
+                , lines: [
+                    "봄이 올 거에요"
+                    , "내가, 나를 사랑할 때"
+                ]
+            }
+            , {
+                title: "#관심, 못말"
+                , lines: [
+                    "정말 싫어하면 아예 쳐다보지도 않아요"
+                    , "굳이 당신을 가리키며 손가락질하고"
+                    , "힐난하는 사람은 둘 중 하나일 거에요"
+                    , "의외로 당신에게 아주 관심이 많거나"
+                    , "혹은, 당신에 대해서 잘 모르거나"
+                ]
+            }
+            , {
+                title: "#단지, 못말"
+                , lines: [
+                    "그래, 곧 괜찮아지겠지"
+                    , "어쩌다 스친 한 장 기억"
+                    , "그 이상도 이하도 아니겠지"
+                    , "단지, 그게 속상할 뿐이야"
+                ]
+            }
+            , {
+                title: "#이유"
+                , lines: [
+                    "답장이 없길래,"
+                    , "무언가 이유가 있다고 생각했다"
+                    , "　"
+                    , "내가 마음이 없는 게 이유였다."
+                ]
+            }
+            , {
+                title: "#연애, 못말"
+                , lines: [
+                    "결코, 완성시킬 수 없는 퍼즐을"
+                    , "그러나 하나씩 맞추어 가보는 것"
+                ]
+            }
+            , {
+                title: "#과거"
+                , lines: [
+                    "그때로 되돌아가고 싶어."
+                    , "그런데, 그 방법을 모르겠어."
+                ]
+            }
+            , {
+                title: "#과거"
+                , lines: [
+                    "잡고 싶어, 잡고 싶은데"
+                    , "잡히지 않았으면 좋겠어"
+                    , "우리를 그만두는 것도"
+                    , "우리를 이어가는 것도"
+                    , "　"
+                    , "나는 자신이 없어."
+                ]
+            }
+            , {
+                title: "#술, 못말"
+                , lines: [
+                    "술기운을 탓했지만"
+                    , "술기운 때문만은 아니었다."
+                ]
+            }
+            , {
+                title: "#조언"
+                , lines: [
+                    "마음을 다하되,"
+                    , "기대는 하지 말 것"
+                    , "최선을 다하되,"
+                    , "자신을 버리지 말 것"
+                ]
+            }
+            , {
+                title: "#하나"
+                , lines: [
+                    "겨우 하나인데"
+                    , "아홉까지 잘해왔고"
+                    , "겨우 하나 놓쳤는데"
+                    , "그 하나가"
+                    , "아홉을 무색하게 만든다"
+                    , "그런 눈빛으로"
+                    , "네가 나를 본다"
+                ]
+            }
+            , {
+                title: "#티"
+                , lines: [
+                    "어떻게 아무렇지 않겠어."
+                    , "아무렇지 않은 척 사는 거지."
+                ]
+            }
+            , {
+                title: "#상처, 못말"
+                , lines: [
+                    "심장 도려낸 자리를"
+                    , "시간이 채우기도 전에"
+                    , "자꾸 사람으로 덧대니까"
+                    , "마음이 곪는 거에요"
+                ]
+            }
+            , {
+                title: "#최소한의 예의, 못말"
+                , lines: [
+                    "돌아오지 않을 거라면"
+                    , "돌아보지도 마세요"
+                ]
+            }
+            , {
+                title: "#실망"
+                , lines: [
+                    "늘 잘할 순 없어요"
+                    , "앞으로 잘 할 당신인데"
+                    , "오늘이 부족했다 실망 말아요"
+                ]
+            }
+            , {
+                title: "#너에게 전하는 말, 채민성"
+                , lines: [
+                    "구멍 난 마음에"
+                    , "감정을 쏟아붓는 것만큼"
+                    , "의미 없는 일은 없겠지."
+                    , "　"
+                    , "그래도 일단 부어본 거야."
+                    , "겉에 조금이라도 스며들까 싶어서."
+                ]
+            }
+            , {
+                title: "#무색, 못말"
+                , lines: [
+                    "웃으면 복이 온다는 말이나"
+                    , "웃는 얼굴에 침 못 뱉는다는 말이"
+                    , "요즘은 참 무색하단 생각이 들어"
+                    , "상대방이 내게 한 실수나 잘못을"
+                    , "너그럽게 웃으며 넘겨주었더니"
+                    , "복이 오기는커녕, 나 같은 건"
+                    , "홀대해도 되는 줄 알더라고"
+                ]
+            }
+            , {
+                title: "#편하게, 크레파스"
+                , lines: [
+                    "자신이 좋아하는 공간에서는 무엇을 하든지 간에,"
+                    , "느끼게 되는 감정은 단 하나, 편안함."
+                    , "누군가의 제약을 받지 않고, 편히 쉴 수 있는 곳."
+                    , "그런 공간을 하나쯤은 만들어 본다면,"
+                    , "딱딱하고 우울한 감정을 조금 덜 수 있진 않을까."
+                ]
+            }
+            , {
+                title: "#시간"
+                , lines: [
+                    "늦었다 생각이 들면"
+                    , "더 빠른 아침을 맞고"
+                    , "더 늦게 밤을 보내라"
+                    , "하루에 시간은 똑같지만"
+                    , "하루를 사는 시간은 다를 수 있다"
+                ]
+            }
+        ];
+
+
+        // 페이지 로드 시 제목과 내용을 무작위로 선택하는 함수
+        function getRandomText(excludeIndex = -1) {
+            let randomIndex;
+            do {
+                randomIndex = Math.floor(Math.random() * texts.length);
+            } while (randomIndex === excludeIndex);
+            return texts[randomIndex];
+        }
+
+        function applyRandomText(memoBox, textData) {
+            const textTitle = memoBox.querySelector('.textTitle');
+            const backText = memoBox.querySelector('.backText');
+
+            textTitle.textContent = textData.title;
+            backText.innerHTML = '';
+
+            textData.lines.forEach(line => {
+                const p = document.createElement('p');
+                p.textContent = line;
+                backText.appendChild(p);
+            });
+        }
+
+        function setRandomTexts() {
+            const memoBoxes = document.querySelectorAll('.memoBox');
+            const firstText = getRandomText();
+            applyRandomText(memoBoxes[0], firstText);
+
+            const secondText = getRandomText(texts.indexOf(firstText));
+            applyRandomText(memoBoxes[1], secondText);
+        }
+
+        window.onload = () => {
+            setRandomTexts();
+            document.getElementById('refreshButton').addEventListener('click', setRandomTexts);
+            document.getElementById('refreshButton').addEventListener('click', getRandomPastelColor);
+        };
+
+        // 랜덤한 파스텔 색상 생성 함수
+        function getRandomPastelColor() {
+            const r = Math.floor((Math.random() * 127) + 128); // 128-255 사이의 값으로 밝은 톤 생성
+            const g = Math.floor((Math.random() * 127) + 128);
+            const b = Math.floor((Math.random() * 127) + 128);
+            return `rgb(${r}, ${g}, ${b})`;
+        }
+
+        // memoBox의 배경색을 랜덤하게 지정
+        document.querySelectorAll('.memoBox').forEach((memoBox) => {
+            const colorBox = memoBox.querySelector('.colorBox');
+            colorBox.style.backgroundColor = getRandomPastelColor();
+
+            // memoBox 클릭 시 flip 기능 추가
+            memoBox.addEventListener('click', () => {
+                memoBox.classList.toggle('flip');
+            });
+        });
+
+    </script>
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+</body>
+
+</html>
