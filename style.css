@@ -31,8 +31,6 @@
 	justify-content: center;
 	align-items: center;
 	cursor: pointer;
-	background: url('backPaper.jpg');
-	background-size: 100%;
 }
 
 .colorBox {
@@ -48,8 +46,7 @@
 	position: absolute;
 	width: 100%;
 	height: 100px;
-	/* background: #FFF; */
-	background: transparent;
+	background: #FFF;
 	bottom: 0px;
 	margin-bottom: 75px;
 }
@@ -59,7 +56,6 @@
 	color: #000;
 	margin-top: 10px;
 	/* margin-left: 10px */
-	background: transparent;
 }
 
 
@@ -71,7 +67,6 @@
 
 .memoBox .text {
 	backface-visibility: hidden;
-	background: transparent;
 }
 
 .memoBox.flip {
@@ -97,8 +92,6 @@
 	display: flex;
     justify-content: center;
     align-items: center;
-	background: url('backPaper.jpg');
-	background-size: 100%;
 }
 
 .backText p {
